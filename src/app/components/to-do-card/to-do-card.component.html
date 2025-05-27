@@ -1,0 +1,17 @@
+<div>
+    <p>Title: {{toDo.title}}</p>
+    @if(toDo.description != undefined){
+    <p>Description: {{toDo.description}}</p>
+    }
+    @if(toDo.deadline != undefined){
+        <p>Deadline: {{toDo.deadline}}</p>
+    }
+    <p>Created on: {{toDo.completedDate}}</p>
+    @if(toDo.completedDate != undefined){
+        <p>Completed on: {{toDo.completedDate}}</p>
+    }
+    <p>Status: {{toDo.isCompleted}}</p>
+    <p>Category Id: {{toDo.categoryId}}</p>
+    <button>Delete</button>
+
+</div>
