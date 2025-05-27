@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ToDo } from "c:/Dev/Angular/Projects/angular-todo/src/app/models/to-do";
+import { ToDo } from "../models/to-do";
 
 @Injectable({
     providedIn: "root"
@@ -40,6 +40,11 @@ export class ToDoService {
 
     getToDos():ToDo[]{
         return this.toDoList;
+    }
+    deleteToDo(obj: {toDoId: number, title: string}): boolean{
+        let lengthArr = this.toDoList.length;
+        this.toDoList=this.toDoList.filter(e => e.toDoId != obj.toDoId);
+        return lengthArr != this.toDoList.length;
     }
 
 }

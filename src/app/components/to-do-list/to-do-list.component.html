@@ -1,3 +1,3 @@
 @for(t of toDoList; track t.toDoId){
-    <app-to-do-card [toDo]='t'></app-to-do-card>
+    <app-to-do-card [toDo]='t' (deleteToDo)="handleDelete($event)"></app-to-do-card>
 }

@@ -19,6 +19,12 @@ export class ToDoListComponent implements OnInit {
   ngOnInit(): void {
     this.toDoList = this._toDoService.getToDos();
   }
-
+  handleDelete(obj: {toDoId: number, title: string}): void{
+    if (this._toDoService.deleteToDo(obj)) {
+      alert(`ToDo: \n TodoId: ${obj.toDoId} \n title: ${obj.title}`);
+    } else{
+      alert("Nessun elemento eliminato");
+    }
+  }
   
 }
