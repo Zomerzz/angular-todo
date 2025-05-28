@@ -12,7 +12,6 @@ import { ToDoCardComponent } from '../to-do-card/to-do-card.component';
 })
 export class ToDoListComponent implements OnInit {
   toDoList: ToDo[] = [];
-
   constructor(private _toDoService: ToDoService){
 
   }
@@ -21,10 +20,10 @@ export class ToDoListComponent implements OnInit {
   }
   handleDelete(obj: {toDoId: number, title: string}): void{
     if (this._toDoService.deleteToDo(obj)) {
+      this.toDoList = this.toDoList.filter(t => t.toDoId != obj.toDoId);
       alert(`ToDo: \n TodoId: ${obj.toDoId} \n title: ${obj.title}`);
     } else{
       alert("Nessun elemento eliminato");
     }
   }
-  
 }

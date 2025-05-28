@@ -45,6 +45,8 @@ export class ToDoService {
         let lengthArr = this.toDoList.length;
         this.toDoList=this.toDoList.filter(e => e.toDoId != obj.toDoId);
         return lengthArr != this.toDoList.length;
+
+        // chiamata al backEnd pre fare la delete
     }
 
 }
