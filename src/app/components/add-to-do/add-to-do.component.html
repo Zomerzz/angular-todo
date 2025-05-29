@@ -1,20 +1,21 @@
-<form  id="add-to-do-form">
+<form id="add-to-do-form" #f="ngForm" (ngSubmit)="sendForm(f)">
     <label for="title">TITLE</label>
-    <input type="text" id = "title"> 
+    <input type="text" id = "title" name="title" [(ngModel)]="todo.title"> 
 
     <label for="description">DESCRIPTION</label>
-    <input type="text" id = "description">  
+    <input type="text" id = "description" name="description" [(ngModel)]="todo.description">  
 
     <label for="deadline">DEADLINE</label>
-    <input type="date" id = "deadline">
+    <input type="date" id = "deadline" name="deadline" [(ngModel)]="todo.deadline">
 
     <label for="category">CATEGORY</label>
-    <select name="category" id="category">
+    <select name="category" id="category" [(ngModel)]="todo.category">
         <option value="1">Fun</option>
         <option value="2">Work</option>
         <option value="3">Study</option>
     </select>
 
-    <button type="button">ADD TO DO</button>
+    <button>ADD TO DO</button> 
+
 </form>
 
