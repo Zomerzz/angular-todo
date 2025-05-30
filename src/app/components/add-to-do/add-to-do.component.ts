@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 import { ToDo } from '../../models/to-do';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { ToDoService } from '../../services/to-do-service';
 @Component({
   selector: 'app-add-to-do',
-  imports: [RouterModule],
+  imports: [RouterModule, FormsModule],
   templateUrl: './add-to-do.component.html',
   styleUrl: './add-to-do.component.css'
 })

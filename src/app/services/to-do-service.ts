@@ -10,7 +10,7 @@ import { Observable } from "rxjs";
 
 export class ToDoService {
     private _url: string = "http://localhost:8080/api/todos";
-    private _http: HttpClient = inject(HttpClient);
+    private _http = inject(HttpClient);
 
     findAll(): Observable<ToDo[]> {
         return this._http.get<ToDo[]>(this._url);
