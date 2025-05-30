@@ -1,0 +1,35 @@
+<form (ngSubmit)="sendForm(f)" [formGroup] = "toDoForm" noValidate>
+    <div> 
+        <label for="title">TITLE</label>
+        <input type="text" id = "title"  formControlName="title"> 
+    </div>
+    @if(title?.invalid && title?.touched){
+        <div><u>inserire un nome</u></div>
+    }
+    <div> 
+        <label for="description">DESCRIPTION</label>
+        <input type="text" id = "description" formControlName="description"> 
+    </div>
+    @if(description?.invalid && description?.touched){
+        <div><u>inserire una descrizione</u></div>
+    }
+    <div>
+        <label for="deadline">DEADLINE</label>
+        <input type="date" id = "deadline" formControlName="deadline">
+    </div>
+    @if(deadline?.hasError("required") && deadline?.touched){
+        <div><u>inserire una deadline</u></div>
+    }
+    @if(deadline?.hasError("dateInPast") && deadline?.touched){
+        <div><u>inserire una data che sia nel futuro</u></div>
+    }
+    <div>
+        <label for="category">CATEGORY</label>
+        <select id="category" formControlName="category">
+            <option value="1">Fun</option>
+            <option value="2">Work</option>
+            <option value="3">Study</option> 
+        </select>
+    </div>  
+    <button type = "submit" [disabled] = "toDoForm.invalid">ADD TO DO</button> 
+</form>

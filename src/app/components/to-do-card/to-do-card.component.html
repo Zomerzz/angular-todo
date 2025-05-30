@@ -1,4 +1,5 @@
 <div>
+    <p>{{toDo.toDoId}}</p>
     <p>Title: {{toDo.title}}</p>
     @if(toDo.description != undefined){
     <p>Description: {{toDo.description}}</p>
@@ -12,6 +13,7 @@
     }
     <p>Status: {{toDo.isCompleted}}</p>
     <p>Category Id: {{toDo.categoryId}}</p>
+    <button [routerLink = "['/to-do-details']"]></button>
     <button (click)="onDelete()">Delete</button>
 
 </div>

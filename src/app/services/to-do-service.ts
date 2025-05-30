@@ -1,4 +1,4 @@
-import { inject, Inject, Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { ToDo } from "../models/to-do";
 import { HttpClient } from "@angular/common/http";
 import { ToDoListComponent } from "../components/to-do-list/to-do-list.component";
@@ -16,9 +16,8 @@ export class ToDoService {
         return this._http.get<ToDo[]>(this._url);
     }
 
-    deleteToDo(toDoId: number): Observable<Boolean>{
-        return this._http.delete<Boolean>(`${this._url}/${toDoId}`);
-        // chiamata al backEnd pre fare la delete
+    deleteToDo(toDoId: number): Observable<void>{
+        return this._http.delete<void>(`${this._url}/${toDoId}`);
     }
 
     postToDo(toDo :Partial<ToDo>): Observable<ToDo> {

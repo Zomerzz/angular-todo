@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ToDo } from '../../models/to-do';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-to-do-card',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './to-do-card.component.html',
   styleUrl: './to-do-card.component.css'
 })

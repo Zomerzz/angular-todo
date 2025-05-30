@@ -6,6 +6,7 @@ import { ToDoCardComponent } from '../to-do-card/to-do-card.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
+  standalone: true,
   selector: 'app-to-do-list',
   imports: [CommonModule, RouterModule, ToDoCardComponent],
   templateUrl: './to-do-list.component.html',
@@ -17,33 +18,24 @@ export class ToDoListComponent implements OnInit {
 
   }
   ngOnInit(): void {
-      console.log("Pippo2")
-      this._toDoService.findAll().subscribe({
-      next: list =>  this.toDoList = list,
-      error: e => console.log("Pippo")
-      //alert(`upsi errore nel caricamento ${e}`)
+    this._toDoService.findAll().subscribe({
+      next: list => this.toDoList = list,
+      error: e => console.log("errore oninit")
     });
   }
   handleDelete(obj: {toDoId: number, title: string}): void{
     this._toDoService.deleteToDo(obj.toDoId).subscribe({
-      next: isDeleted => {
-        if(isDeleted){
+      next: () => {
           alert("Dato cancellato");
           this.toDoList = this.toDoList.filter(t => t.toDoId != obj.toDoId);
-        } else{
-          alert("sono entrato nell'else");
-        }
       },
       error: e =>{ 
         alert(`upsi errore nel nella cancellazione dati  ${e} \n per id ${obj.toDoId}`);
-        //this.ngOnInit();
+        this._toDoService.findAll().subscribe({
+        next: list => this.toDoList = list,
+        error: e => console.log("errore oninit")
+    });
     }
     });
-    // if (this._toDoService.deleteToDo(obj.toDoId)) {
-    //   this.toDoList = this.toDoList.filter(t => t.toDoId != obj.toDoId);
-    //   alert(`ToDo: \n TodoId: ${obj.toDoId} \n title: ${obj.title}`);
-    // } else{
-    //   alert("Nessun elemento eliminato");
-    // }
   }
 }
