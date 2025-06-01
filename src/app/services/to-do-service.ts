@@ -21,6 +21,8 @@ export class ToDoService {
     }
 
     postToDo(toDo :Partial<ToDo>): Observable<ToDo> {
+        console.log(toDo);
+        
         let creationDate : string = new Date().toISOString().split('T')[0];
         toDo.creationDate = creationDate;
         return this._http.post<ToDo>(this._url, toDo);

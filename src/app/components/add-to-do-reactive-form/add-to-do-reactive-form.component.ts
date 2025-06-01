@@ -20,7 +20,7 @@ export class AddToDoReactiveFormComponent {
       title:  ["",[Validators.required]],
       description: ["",[Validators.required]],
       deadline: ["",[Validators.required, this.checkDateInFuture.bind(this)]],
-      category: ["",[Validators.required]]
+      categoryId: ["",[Validators.required]]
     });
   }
 
@@ -35,13 +35,15 @@ export class AddToDoReactiveFormComponent {
   }
 
   sendForm(){
-    this._toDoService.postToDo(this.toDoForm.value).subscribe({
-      next: toDo => {
+    console.log(this.toDoForm.value);
+    
+    this._toDoService.postToDo(this.toDoForm.value).subscribe({     
+      next: (toDo) => {
         alert(`todo con id ${toDo.toDoId} salvato`);
-        this._router.navigate([`/to-do-list`])
+        this._router.navigate([`/to-do-list`]);
       },
       error: e => alert("errore nella aggiunta dello studente")
-    })
+    });
   }
 
   get title(){

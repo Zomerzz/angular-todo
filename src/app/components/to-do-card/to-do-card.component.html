@@ -13,7 +13,7 @@
     }
     <p>Status: {{toDo.isCompleted}}</p>
     <p>Category Id: {{toDo.categoryId}}</p>
-    <button [routerLink = "['/to-do-details']"]></button>
+    <button [routerLink] = "['/to-do-details']">vedere dettagli</button>
     <button (click)="onDelete()">Delete</button>
 
 </div>
